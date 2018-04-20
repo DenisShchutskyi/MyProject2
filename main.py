@@ -18,21 +18,21 @@ class Statistic:
 
     async def __count_like_tracks(self):
         #  1. подсчитывать количество лайков каждого трека (от всех пользователей)
-        data = self.conn.track.find({})
+        data = self.conn.track.find({})  #
         for d in data:
-            if self.data_for_likes_tracks.get(d['_id'], False):
+            if self.data_for_likes_tracks.get(d['_id'], False):  #
                 pass
             else:
-                self.data_for_likes_tracks[d['_id']] = {
+                self.data_for_likes_tracks[d['_id']] = {  #
                     'title': d['title'],
-                    'count': self.conn.track_to_user.find({'_id_track': d['_id']}).count()
+                    'count': self.conn.track_to_user.find({'_id_track': d['_id']}).count()  #
                 }
 
     async def __count_like_track(self, title_track):
         # 2. количество лайков заданного трека
-        data = self.conn.track_to_user.find({})
+        data = self.conn.track_to_user.find({})  #
         for d in data:
-            if self.conn.track.find_one({'_id': ObjectId(d['_id_track'])})['title'] == title_track:
+            if self.conn.track.find_one({'_id': ObjectId(d['_id_track'])})['title'] == title_track:  #
                 if self.data_for_likes_tracks.get(d['_id'], False):
                     pass
                 else:
@@ -40,9 +40,9 @@ class Statistic:
 
     async def __count_like_user(self, name):
         # 3. количество понравившихся треков конкретного пользователя.
-        data = self.conn.track_to_user.find({})
+        data = self.conn.track_to_user.find({})  #
         for d in data:
-            if self.conn.users.find_one({'_id': ObjectId(d['_id_user'])})['name'] == name:
+            if self.conn.users.find_one({'_id': ObjectId(d['_id_user'])})['name'] == name:  #
                 if self.data_for_likes_tracks.get(d['_id'], False):
                     pass
                 else:

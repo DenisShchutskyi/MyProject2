@@ -4,9 +4,9 @@
 
 файл               | за что отвечвет
 ------------------ | ----------------
-config.py          | настройеи для проекта и создание connect-а к MongoDB
+config.py          | настройки для проекта и создание connect-а к MongoDB
 data_generator.py  | создание треков, пользователей и связей между ними 
-docker-compose.yml | настройни для docker-compose
+docker-compose.yml | настройки для docker-compose
 main.py            | основные классы обработчиков 
 models.py          | модели классов для User Track
 requirements.txt   | список библиотек необходимых для проекта

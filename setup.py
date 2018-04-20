@@ -1,17 +1,16 @@
-import time
 import asyncio
 from config import connect  # коннект к базе
 from data_generator import users  # сгененриролванные пользователи
 from main import Processing
 from main import Statistic
 
-count_thread_processing = 3
-count_thread_statistic = 3
+count_thread_processing = 3  # количество потоков для обработки ввода
+count_thread_statistic = 3  # количество потоков для подсчета
 
 loop = asyncio.get_event_loop()
 
 #
-processing = Processing(users,
+processing = Processing(users,  # инициализация
                         connect,
                         loop,
                         count_thread=count_thread_processing)
@@ -21,7 +20,7 @@ print('добавление в базу пользователей')
 processing.run_insert_data_to_mongo()
 print("проверьте наличие данных \n(для продолжения enter)")
 input()
-statistic = Statistic(connect,
+statistic = Statistic(connect,  # инициализация
                       loop,
                       count_thread=count_thread_statistic)
 
